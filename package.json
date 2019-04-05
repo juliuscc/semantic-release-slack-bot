@@ -1,0 +1,30 @@
+{
+	"name": "semantic-release-slack-bot",
+	"version": "0.0.0-semantically-released",
+	"description": "A slack bot for semantic-release notifying release statuses",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/juliuscc/semantic-release-slack-bot.git"
+	},
+	"keywords": [
+		"semantic-release",
+		"slack",
+		"bot",
+		"slack-bot",
+		"release-notification",
+		"release"
+	],
+	"contributors": [
+		"Julius Celik <julius.cc@hotmail.com>",
+		"Hannes Rabo <hannes.rabo@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/juliuscc/semantic-release-slack-bot/issues"
+	},
+	"homepage": "https://github.com/juliuscc/semantic-release-slack-bot#readme",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
+}
