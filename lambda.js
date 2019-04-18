@@ -32,12 +32,17 @@ exports.handler = function(event, context) {
 					// "scope":"identify,incoming-webhook,chat:write:bot",
 					// "user_id":"xxx","team_name":"xxx","team_id":"xxx"}
 					if (jsonStr.ok) {
+						// context.succeed({
+						//     'statusCode': 200,
+						//     body: JSON.stringify({'ok': true, 'access_token': jsonStr.access_token}),
+						// })
 						context.succeed({
-							statusCode: 200,
-							body: JSON.stringify({
-								ok: true,
-								access_token: jsonStr.access_token
-							})
+							statusCode: 301,
+							headers: {
+								Location: `https://juliuscc.github.io/semantic-release-slack-bot/index.html?access_token=${
+									jsonStr.access_token
+								}`
+							}
 						})
 					} else {
 						context.succeed({
