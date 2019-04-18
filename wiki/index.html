@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Semantic Releaser</title>
+
+		<style>
+			@font-face {
+				font-family: 'emoji';
+				src: url('emojione-svg.woff2') format('woff2');
+			}
+			.wrapper {
+				width: 80%;
+				margin: 100px auto;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			h1 {
+				width: 60%;
+				margin-bottom: 50px;
+				font-size: 250%;
+			}
+			.input-container {
+				width: 60%;
+				display: flex;
+			}
+			p {
+				width: 60%;
+				margin-top: 50px;
+			}
+			.input-container div {
+				width: 10%;
+				color: white;
+				cursor: pointer;
+				background-color: lightseagreen;
+				border: 1px solid lightseagreen;
+				font-size: 170%;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			.input-container div:hover {
+				border: 1px solid lightseagreen;
+				color: lightseagreen;
+				background-color: white;
+			}
+			input {
+				width: 90%;
+				font-size: 250%;
+				border: 1px solid lightseagreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<h1>📦🚀 Semantic Releaser</h1>
+			<div class="input-container">
+				<input type="text" id="input-field" value="..." />
+				<div id="copy-button">⎘</div>
+			</div>
+			<p>
+				Copy the publish url and paste it into your config. This is a
+				private value, do not share it with anyone you do not trust.
+			</p>
+		</div>
+	</body>
+
+	<script>
+		function buttonClick(event) {
+			document.querySelector('#input-field').select()
+			document.execCommand('copy')
+		}
+
+		function fieldClick(event) {
+			document.querySelector('#input-field').select()
+		}
+
+		const urlParams = new URLSearchParams(window.location.search)
+		const token = urlParams.get('access_token')
+		let field = document.querySelector('#input-field')
+		field.value = token
+		field.addEventListener('click', fieldClick)
+
+		let button = document.querySelector('#copy-button')
+		button.addEventListener('click', buttonClick)
+	</script>
+</html>
