@@ -7,55 +7,89 @@
 		<title>Semantic Releaser</title>
 
 		<style>
-			@font-face {
-				font-family: 'emoji';
-				src: url('emojione-svg.woff2') format('woff2');
+			html {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+					'Helvetica Neue', sans-serif;
 			}
+
 			.wrapper {
-				width: 80%;
+				width: 70%;
 				margin: 100px auto;
 				display: flex;
 				justify-content: center;
 				flex-wrap: wrap;
+				padding-bottom: 300px;
+				position: relative;
 			}
-			h1 {
-				width: 60%;
-				margin-bottom: 50px;
-				font-size: 250%;
+
+			.header-container {
+				min-width: 55%;
+				display: flex;
+				margin-bottom: 45px;
+				justify-content: center;
+			}
+			.header-container img {
+				width: 70px;
+				height: 70px;
+			}
+
+			.header-container h1 {
+				margin: 10px 10px 50px;
+				font-size: 300%;
 			}
 			.input-container {
-				width: 60%;
+				min-width: 55%;
 				display: flex;
+				border: 1px solid #0288d1;
+				border-radius: 8px;
+				overflow: hidden;
 			}
 			p {
-				width: 60%;
-				margin-top: 50px;
+				position: absolute;
+				bottom: 20px;
 			}
 			.input-container div {
 				width: 10%;
 				color: white;
 				cursor: pointer;
-				background-color: lightseagreen;
-				border: 1px solid lightseagreen;
-				font-size: 170%;
+				background-color: #0288d1;
+				font-size: 180%;
 				text-align: center;
-				box-sizing: border-box;
+				transition: background-color 0.2s;
+				padding: 0 10px;
 			}
 			.input-container div:hover {
-				border: 1px solid lightseagreen;
-				color: lightseagreen;
-				background-color: white;
+				background-color: #016092;
 			}
 			input {
 				width: 90%;
+				border: none;
 				font-size: 250%;
-				border: 1px solid lightseagreen;
+				padding: 10px;
+			}
+
+			@media (max-width: 470px) {
+				.wrapper {
+					width: 90%;
+				}
+				.header-container {
+					flex-wrap: wrap;
+					justify-content: center;
+					margin-bottom: 0;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<div class="wrapper">
-			<h1>📦🚀 Semantic Releaser</h1>
+			<div class="header-container">
+				<img
+					src="./rocket-emoji-by-google.png"
+					alt="rocket-emoji-by-google"
+				/>
+				<h1>Semantic Releaser</h1>
+			</div>
 			<div class="input-container">
 				<input type="text" id="input-field" value="..." />
 				<div id="copy-button">⎘</div>
@@ -63,6 +97,12 @@
 			<p>
 				Copy the publish url and paste it into your config. This is a
 				private value, do not share it with anyone you do not trust.
+				<br /><br />
+				Complete instructions are available at the
+				<a href="https://github.com/juliuscc/semantic-release-slack-bot"
+					>github repo</a
+				>
+				repo
 			</p>
 		</div>
 	</body>
