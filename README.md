@@ -47,6 +47,10 @@ With this example:
 -   Slack notifications are skipped on a succesfull release
 -   Slack notifications are sent on a failed release
 
+## Screenshot
+
+![Screenshot of messages](images/screenshot.png)
+
 ## Configuration
 
 ### Slack app installation
