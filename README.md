@@ -47,7 +47,7 @@ With this example:
 -   Slack notifications are skipped on a succesfull release
 -   Slack notifications are sent on a failed release
 
-## Screenshot
+## Screenshots
 
 ![Screenshot of success](images/screenshot-success.png)
 ![Screenshot of fail](images/screenshot-fail.png)
