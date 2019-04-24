@@ -49,7 +49,8 @@ With this example:
 
 ## Screenshot
 
-![Screenshot of messages](images/screenshot.png)
+![Screenshot of success](images/screenshot-success.png)
+![Screenshot of fail](images/screenshot-fail.png)
 
 ## Configuration
 
