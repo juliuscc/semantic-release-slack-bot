@@ -18,22 +18,51 @@
 					'Helvetica Neue', sans-serif;
 			}
 
+			body {
+				margin: 0;
+			}
+
 			.wrapper {
-				width: 70%;
+				width: 80%;
+				max-width: 960px;
 				margin: 100px auto;
 				display: flex;
 				justify-content: center;
 				flex-wrap: wrap;
+				padding: 0 20px;
 				padding-bottom: 300px;
 				position: relative;
+				box-sizing: border-box;
+			}
+
+			@media screen and (max-width: 992px) {
+				.wrapper {
+					width: 85%;
+				}
+			}
+
+			@media screen and (max-width: 600px) {
+				.wrapper {
+					width: 100%;
+				}
 			}
 
 			.header-container {
-				min-width: 55%;
+				width: 100%;
 				display: flex;
 				margin-bottom: 45px;
 				justify-content: center;
 			}
+
+			@media (max-width: 470px) {
+				.header-container {
+					flex-wrap: wrap;
+					justify-content: center;
+					margin-bottom: 0;
+					text-align: center;
+				}
+			}
+
 			.header-container img {
 				width: 70px;
 				height: 70px;
@@ -41,48 +70,43 @@
 
 			.header-container h1 {
 				margin: 10px 10px 50px;
-				font-size: 300%;
-			}
-			.input-container {
-				min-width: 55%;
-				display: flex;
-				border: 1px solid #0288d1;
-				border-radius: 8px;
-				overflow: hidden;
-			}
-			p {
-				position: absolute;
-				bottom: 20px;
-			}
-			.input-container div {
-				width: 10%;
-				color: white;
-				cursor: pointer;
-				background-color: #0288d1;
-				font-size: 180%;
-				text-align: center;
-				transition: background-color 0.2s;
-				padding: 0 10px;
-			}
-			.input-container div:hover {
-				background-color: #016092;
-			}
-			input {
-				width: 90%;
-				border: none;
-				font-size: 250%;
-				padding: 10px;
+				font-size: 40px;
 			}
 
-			@media (max-width: 470px) {
-				.wrapper {
-					width: 90%;
-				}
-				.header-container {
-					flex-wrap: wrap;
-					justify-content: center;
-					margin-bottom: 0;
-				}
+			.input-container {
+				width: 100%;
+				display: flex;
+			}
+
+			p {
+				width: 100%;
+				margin-top: 100px;
+			}
+
+			.input-container button {
+				width: 50px;
+				color: white;
+				cursor: pointer;
+				background-color: #00a5ff;
+				border: 1px solid #00a5ff;
+				border-radius: 0 10px 10px 0;
+				text-align: center;
+				transition: all 0.2s;
+				padding: 0 10px;
+			}
+
+			.input-container button:hover {
+				background-color: #008fdb;
+				border-color: #008fdb;
+			}
+
+			input {
+				flex: 1;
+				border: 1px solid #00a5ff;
+				border-right: none;
+				border-radius: 10px 0 0 10px;
+				padding: 10px;
+				font-size: 20px;
 			}
 		</style>
 	</head>
@@ -97,7 +121,14 @@
 			</div>
 			<div class="input-container">
 				<input type="text" id="input-field" value="..." />
-				<div id="copy-button">⎘</div>
+				<button id="copy-button">
+					<img
+						src="./clippy.svg"
+						alt="Copy to clipboard"
+						width="20px"
+						color="white"
+					/>
+				</button>
 			</div>
 			<p>
 				Copy the publish url and paste it into your config. This is a
@@ -106,8 +137,7 @@
 				Complete instructions are available at the
 				<a href="https://github.com/juliuscc/semantic-release-slack-bot"
 					>github repo</a
-				>
-				repo
+				>.
 			</p>
 		</div>
 	</body>
