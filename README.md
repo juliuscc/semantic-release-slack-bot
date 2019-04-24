@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/semantic-release-slack-bot.svg?style=flat-square)](https://www.npmjs.com/package/semantic-release-slack-bot)
 [![npm](https://img.shields.io/npm/dm/semantic-release-slack-bot.svg?style=flat-square)](https://www.npmjs.com/package/semantic-release-slack-bot)
+![CircleCI branch](https://img.shields.io/circleci/project/github/juliuscc/semantic-release-slack-bot/master.svg?style=flat-square)
 [![license](https://img.shields.io/github/license/juliuscc/semantic-release-slack-bot.svg?style=flat-square)](https://github.com/juliuscc/semantic-release-slack-bot/blob/master/LICENSE)
 [![add to slack](https://img.shields.io/badge/Add%20to%20Slack-Semantic%20Release-%234A154B.svg?style=flat-square&logo=slack)](https://slack.com/oauth/authorize?client_id=605439709265.611687593109&scope=incoming-webhook)
 
