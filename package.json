@@ -3,7 +3,7 @@
 	"version": "0.0.0-semantically-released",
 	"description": "A slack bot for semantic-release notifying release statuses",
 	"main": "index.js",
-	"private": true,
+	"private": false,
 	"files": [
 		"lib",
 		"index.js"
