@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  deploy:
+    branches:
+      only:
+        - master
+    docker:
+      - image: circleci/node:10.5.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Semantic Release
+          command: npm run semantic-release
