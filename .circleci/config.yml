@@ -18,5 +18,8 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Lint test
+          command: npm run lint
+      - run:
           name: Semantic Release
           command: npm run semantic-release
