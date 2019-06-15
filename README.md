@@ -75,21 +75,21 @@ The `SLACK_WEBHOOK` variable has to be defined in the environment where you will
 
 ### Options
 
-| Option            | Description                                                                                                                   | Default   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `notifyOnSuccess` | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false     |
-| `notifyOnFail`    | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false     |
-| `onSuccess`       | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined |
-| `onFail`          | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined |
+| Option              | Description                                                                                                                   | Default   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `notifyOnSuccess`   | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false     |
+| `notifyOnFail`      | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false     |
+| `onSuccessTemplate` | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined |
+| `onFailTemplate`    | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined |
 
 ### Templating
 
-If a template is provided via either the `onSuccess` or `onFail` options, it will be used for the respective slack message. The template should be an object that follows the [Slack API message structure](https://api.slack.com/docs/message-formatting). Strings within the template will have keywords replaced:
+If a template is provided via either the `onSuccessTemplate` or `onFailTemplate` options, it will be used for the respective slack message. The template should be an object that follows the [Slack API message structure](https://api.slack.com/docs/message-formatting). Strings within the template will have keywords replaced:
 
-| Keyword                | Description                 | Example                                           | Template  |
-| ---------------------- | --------------------------- | ------------------------------------------------- | --------- |
-| `$npm_package_name`    | The name of the package.    | semantic-release-test                             | Both      |
-| `$npm_package_version` | The version of the release. | 1.0.93                                            | onSuccess |
-| `$repo_path`           | The repository path.        | juliuscc/semantic-release-test                    | Both      |
-| `$repo_url`            | The repository URL.         | https://github.com/juliuscc/semantic-release-test | Both      |
-| `$release_notes`       | The notes of the release.   |                                                   | onSuccess |
+| Keyword                | Description                 | Example                                           | Template          |
+| ---------------------- | --------------------------- | ------------------------------------------------- | ----------------- |
+| `$npm_package_name`    | The name of the package.    | semantic-release-test                             | Both              |
+| `$npm_package_version` | The version of the release. | 1.0.93                                            | onSuccessTemplate |
+| `$repo_path`           | The repository path.        | juliuscc/semantic-release-test                    | Both              |
+| `$repo_url`            | The repository URL.         | https://github.com/juliuscc/semantic-release-test | Both              |
+| `$release_notes`       | The notes of the release.   |                                                   | onSuccessTemplate |
