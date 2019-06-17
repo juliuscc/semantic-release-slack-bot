@@ -69,9 +69,10 @@ Installing the app will yield you with a webhook that the app uses to publish up
 
 The `SLACK_WEBHOOK` variable has to be defined in the environment where you will be running semantic release. This can be done by exporting it in bash or in the user interface of you CI provider. Obtain this token by installing the slack app according to [slack app installation](#slack-app-installation).
 
-| Variable        | Description                                         |
-| --------------- | --------------------------------------------------- |
-| `SLACK_WEBHOOK` | Slack webhook created when adding app to workspace. |
+| Variable                   | Description                                              |
+| -------------------------- | -------------------------------------------------------- |
+| `SLACK_WEBHOOK`            | Slack webhook created when adding app to workspace.      |
+| `SEMANTIC_RELEASE_PACKAGE` | Override or add package name instead of npm package name |
 
 ### Options
 
