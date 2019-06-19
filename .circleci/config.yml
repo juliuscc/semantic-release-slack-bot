@@ -22,6 +22,7 @@ jobs:
     docker:
       - image: circleci/node:10.5.0
     steps:
+      - checkout
       - run:
           name: Semantic Release
           command: npm run semantic-release
