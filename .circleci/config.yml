@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
     docker:
       - image: circleci/node:10.5.0
     steps:
@@ -20,6 +17,28 @@ jobs:
       - run:
           name: Lint test
           command: npm run lint
+      # This is where we should add test
+  deploy-prod:
+    docker:
+      - image: circleci/node:10.5.0
+    steps:
       - run:
           name: Semantic Release
           command: npm run semantic-release
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - /feature-.*/
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
