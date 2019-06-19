@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.5.0
-    working-directory: ~/
     steps:
       - checkout
       - restore_cache:
@@ -19,10 +18,9 @@ jobs:
           name: Lint test
           command: npm run lint
       # This is where we should add test
-  deploy-prod:
+  deploy:
     docker:
       - image: circleci/node:10.5.0
-    working-directory: ~/
     steps:
       - run:
           name: Semantic Release
@@ -33,7 +31,7 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy-prod:
+      - deploy:
           requires:
             - build
           filters:
