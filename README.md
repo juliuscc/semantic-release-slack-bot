@@ -1,4 +1,4 @@
-# semantic-release-slack-bot
+# semantic-release-slack-bot test
 
 [**semantic-release**](https://github.com/semantic-release/semantic-release) plugin to get release notifications on [slack](https://slack.com/) from a slack bot
 
