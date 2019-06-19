@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.5.0
+    working-directory: ~/
     steps:
       - checkout
       - restore_cache:
@@ -21,6 +22,7 @@ jobs:
   deploy-prod:
     docker:
       - image: circleci/node:10.5.0
+    working-directory: ~/
     steps:
       - run:
           name: Semantic Release
