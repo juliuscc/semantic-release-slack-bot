@@ -18,7 +18,7 @@
 Add the plugin to your npm-project:
 
 ```bash
-$ npm install semantic-release-slack-bot -D
+$ npm install semantic-release-slack-bot -D 
 ```
 
 The corresponding slack app has be installed in you slack workspace as well. Follow the instructions under [configuration](#configuration) for more information.
