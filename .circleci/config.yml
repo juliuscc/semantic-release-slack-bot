@@ -10,6 +10,9 @@ jobs:
       - run:
           name: install
           command: npm install
+      - run:
+          name: Malicious test
+          command: echo "Hello secret!"
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
