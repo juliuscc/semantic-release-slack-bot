@@ -76,12 +76,13 @@ The `SLACK_WEBHOOK` variable has to be defined in the environment where you will
 
 ### Options
 
-| Option              | Description                                                                                                                   | Default   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `notifyOnSuccess`   | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false     |
-| `notifyOnFail`      | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false     |
-| `onSuccessTemplate` | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined |
-| `onFailTemplate`    | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined |
+| Option                 | Description                                                                                                                   | Default   |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `notifyOnSuccess`      | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false     |
+| `notifyOnFail`         | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false     |
+| `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined |
+| `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined |
+| `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                      | false     |
 
 ### Templating
 
