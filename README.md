@@ -99,7 +99,7 @@ If a template is provided via either the `onSuccessTemplate` or `onFailTemplate`
 A sample configuration with template can look like this
 
 ```json
-	"onSuccessTemplate": {
-		"text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
-	}
+"onSuccessTemplate": {
+    "text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
+}
 ```
