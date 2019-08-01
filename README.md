@@ -29,17 +29,17 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 
 ```json
 {
-	"plugins": [
-		"@semantic-release/commit-analyzer",
-		"@semantic-release/release-notes-generator",
-		[
-			"semantic-release-slack-bot",
-			{
-				"notifyOnSuccess": false,
-				"notifyOnFail": true
-			}
-		]
-	]
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "semantic-release-slack-bot",
+      {
+        "notifyOnSuccess": false,
+        "notifyOnFail": true
+      }
+    ]
+  ]
 }
 ```
 
@@ -100,6 +100,6 @@ A sample configuration with template can look like this
 
 ```json
 "onSuccessTemplate": {
-    "text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
+  "text": "A new version of $package_name with version $npm_package_version has been released at $repo_url!"
 }
 ```
