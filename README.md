@@ -61,6 +61,8 @@ The plugin uses a slack webhook which you get by adding the slack app to your sl
 
 <a href="https://slack.com/oauth/authorize?client_id=605439709265.611687593109&scope=incoming-webhook"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
 
+For the security concerned, feel free to [create your own slack app](https://api.slack.com/apps) and create a web-hook or inspect the server code that does this creation for you at [create-webhook.js](lambda/create-webhook.js). The only required permission for the webhook is to publish to a single channel.
+
 ### Slack app authentication
 
 Installing the app will yield you with a webhook that the app uses to publish updates to your selected chanel. The Slack webhook authentication link is **required and needs to be kept a secret**. It should be defined in the [environment variables](#environment-variables).
