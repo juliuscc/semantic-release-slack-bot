@@ -69,7 +69,9 @@ Installing the app will yield you with a webhook that the app uses to publish up
 
 ### Environment variables
 
-The `SLACK_WEBHOOK` variable has to be defined in the environment where you will be running semantic release. This can be done by exporting it in bash or in the user interface of you CI provider. Obtain this token by installing the slack app according to [slack app installation](#slack-app-installation).
+The `SLACK_WEBHOOK` variable can be defined in the environment where you will be running semantic release. This can be done by exporting it in bash or in the user interface of your CI provider. Obtain this token by installing the slack app according to [slack app installation](#slack-app-installation).
+
+Alternatively, you could pass the webhook as a configuration option.
 
 | Variable                   | Description                                              |
 | -------------------------- | -------------------------------------------------------- |
@@ -78,13 +80,14 @@ The `SLACK_WEBHOOK` variable has to be defined in the environment where you will
 
 ### Options
 
-| Option                 | Description                                                                                                                   | Default   |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `notifyOnSuccess`      | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false     |
-| `notifyOnFail`         | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false     |
-| `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined |
-| `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined |
-| `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                      | false     |
+| Option                 | Description                                                                                                                   | Default       |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `notifyOnSuccess`      | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false         |
+| `notifyOnFail`         | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false         |
+| `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined     |
+| `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined     |
+| `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                      | false         |
+| `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                           | SLACK_WEBHOOK |
 
 ### Templating
 
