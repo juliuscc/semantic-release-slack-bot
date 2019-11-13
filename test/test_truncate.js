@@ -2,6 +2,12 @@ const assert = require('assert')
 const truncate = require('../lib/truncate')
 
 describe('test truncate', () => {
+	it('should not fail with empty message', () => {
+		const expected = ''
+		const actual = truncate(expected, expected.length)
+		assert.equal(expected, actual)
+	})
+
 	it('should not truncate when length <= maxLength', () => {
 		const expected = 'hello world'
 		const actual = truncate(expected, expected.length)
