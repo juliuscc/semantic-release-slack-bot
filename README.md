@@ -29,17 +29,17 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 
 ```json
 {
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    [
-      "semantic-release-slack-bot",
-      {
-        "notifyOnSuccess": false,
-        "notifyOnFail": true
-      }
-    ]
-  ]
+	"plugins": [
+		"@semantic-release/commit-analyzer",
+		"@semantic-release/release-notes-generator",
+		[
+			"semantic-release-slack-bot",
+			{
+				"notifyOnSuccess": false,
+				"notifyOnFail": true
+			}
+		]
+	]
 }
 ```
 
@@ -80,14 +80,15 @@ Alternatively, you could pass the webhook as a configuration option.
 
 ### Options
 
-| Option                 | Description                                                                                                                   | Default       |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `notifyOnSuccess`      | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success. | false         |
-| `notifyOnFail`         | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.        | false         |
-| `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).  | undefined     |
-| `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).        | undefined     |
-| `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                      | false         |
-| `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                           | SLACK_WEBHOOK |
+| Option                 | Description                                                                                                                                                               | Default       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `notifyOnSuccess`      | Determines if a succesfull release should trigger a slack message to be sent. If `false` this plugin does nothing on success.                                             | false         |
+| `notifyOnFail`         | Determines if a failed release should trigger a slack message to be sent. If `false` this plugin does nothing on fail.                                                    | false         |
+| `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).                                              | undefined     |
+| `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).                                                    | undefined     |
+| `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                                                                  | false         |
+| `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                                                                       | SLACK_WEBHOOK |
+| `maxLength`            | Maximum character length for the release notes before truncation. [Slacks hard limit is 40,000](https://api.slack.com/changelog/2018-04-truncating-really-long-messages). | 2900          |
 
 ### Templating
 
