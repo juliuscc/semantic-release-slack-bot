@@ -36,4 +36,11 @@ describe('test getRepoInfo', () => {
 		const expectedUrl = 'https://github.com/hello/world'
 		runAssert(repositoryUrl, expectedPath, expectedUrl)
 	})
+
+	it('should work for repo url with git@', () => {
+		const repositoryUrl = 'git@github.com:hello/world.git'
+		const expectedPath = 'hello/world'
+		const expectedUrl = 'https://github.com/hello/world'
+		runAssert(repositoryUrl, expectedPath, expectedUrl)
+	})
 })
