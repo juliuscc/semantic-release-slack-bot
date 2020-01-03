@@ -29,24 +29,24 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 
 ```json
 {
-	"plugins": [
-		"@semantic-release/commit-analyzer",
-		"@semantic-release/release-notes-generator",
-		[
-			"semantic-release-slack-bot",
-			{
-				"notifyOnSuccess": false,
-				"notifyOnFail": true
-			}
-		]
-	]
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "semantic-release-slack-bot",
+      {
+        "notifyOnSuccess": false,
+        "notifyOnFail": true
+      }
+    ]
+  ]
 }
 ```
 
 With this example:
 
--   Slack notifications are skipped on a succesfull release
--   Slack notifications are sent on a failed release
+- Slack notifications are skipped on a succesfull release
+- Slack notifications are sent on a failed release
 
 ## Screenshots
 
