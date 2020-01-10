@@ -21,7 +21,8 @@
     "bot",
     "slack-bot",
     "release-notification",
-    "release"
+    "release",
+    "ci"
   ],
   "contributors": [
     "Julius Celik <julius.cc@hotmail.com>",
