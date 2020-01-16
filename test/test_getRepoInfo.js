@@ -43,4 +43,11 @@ describe('test getRepoInfo', () => {
     const expectedUrl = 'https://github.com/hello/world'
     runAssert(repositoryUrl, expectedPath, expectedUrl)
   })
+
+  it('should work for repo url with other TLD', () => {
+    const repositoryUrl = 'git@github.pl:hello/world.git'
+    const expectedPath = 'hello/world'
+    const expectedUrl = 'https://github.pl/hello/world'
+    runAssert(repositoryUrl, expectedPath, expectedUrl)
+  })
 })
