@@ -88,6 +88,7 @@ Alternatively, you could pass the webhook as a configuration option.
 | `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).                                                                                                                          | undefined     |
 | `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                                                                                                                                        | false         |
 | `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                                                                                                                                             | SLACK_WEBHOOK |
+| `packageName `         | Override or add package name instead of npm package name                                                                                                                                                                                        | SEMANTIC_RELEASE_PACKAGE or npm package name |
 | `unsafeMaxLength`      | Maximum character length for the release notes before truncation. If maxLength is too high, messages can be dropped. [Read here](https://github.com/juliuscc/semantic-release-slack-bot/issues/26#issuecomment-569804359) for more information. | 2900          |
 
 ### Templating
