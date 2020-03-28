@@ -66,7 +66,7 @@
     "semantic-release": "^15.13.3"
   },
   "peerDependencies": {
-    "semantic-release": ">=11.0.0 <=17.0.0"
+    "semantic-release": ">=11.0.0 <18.0.0"
   },
   "config": {
     "commitizen": {
