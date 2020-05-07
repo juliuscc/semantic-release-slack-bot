@@ -38,6 +38,13 @@ describe('test template', () => {
     assert.equal(expected, actual)
   })
 
+  it('should replace multiple identical variables in string', () => {
+    const world = 'underworld'
+    const expected = `hello ${world}, hello ${world}`
+    const actual = template('hello $world, hello $world', { world })
+    assert.equal(expected, actual)
+  })
+
   it('should replace variable in list', () => {
     const expected = 'underworld'
     const actual = template(['$world'], { world: expected })
