@@ -37,3 +37,5 @@ describe('test chunkifyText', () => {
     assert.deepStrictEqual(actual, expected)
   })
 })
+
+//TEST WITH PLAIN TEXT WITHOUT NEW LINES

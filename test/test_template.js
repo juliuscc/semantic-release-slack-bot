@@ -101,4 +101,24 @@ describe('test template', () => {
     const actual = template(expected)
     assert.equal(expected, actual)
   })
+
+  it.only('PARTY', () => {
+    const input = {
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'my $release_notes goes here'
+          }
+        }
+      ],
+      text: 'shalalala'
+    }
+    //const expected = 123
+    const actual = template(input, { release_notes: 'dick' })
+    console.log(actual)
+    console.log(actual.blocks)
+    //assert.equal(expected, actual)
+  })
 })
