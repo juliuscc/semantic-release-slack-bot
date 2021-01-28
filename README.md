@@ -36,7 +36,8 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
       "semantic-release-slack-bot",
       {
         "notifyOnSuccess": false,
-        "notifyOnFail": true
+        "notifyOnFail": true,
+        "filterBranches": ["lts/*", "master"]
       }
     ]
   ]
@@ -46,7 +47,7 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 With this example:
 
 - Slack notifications are skipped on a successful release
-- Slack notifications are sent on a failed release
+- Slack notifications are sent on a failed release if the current branch is master or start with "lts/"
 
 ## Screenshots
 
@@ -93,7 +94,7 @@ Alternatively, you could pass the webhook as a configuration option.
 | `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                                                                                                                                                                                               | value of the environment variable matching `slackWebhookEnVar` |
 | `packageName`          | Override or add package name instead of npm package name                                                                                                                                                                                                                                          | SEMANTIC_RELEASE_PACKAGE or npm package name                   |
 | `unsafeMaxLength`      | Maximum character length for the release notes before truncation. If unsafeMaxLength is too high, messages can be dropped. [Read here](https://github.com/juliuscc/semantic-release-slack-bot/issues/26#issuecomment-569804359) for more information. Set to '0' to turn off truncation entirely. | 2900                                                           |
-| `filterBranches`       | Avoid triggering a slack message to be sent on branches not matching these filters. If not defined, slack message will be triggered on every branch. Filters can be glob patterns.                                                            | undefined                                    |
+| `filterBranches`       | Avoid triggering a slack message to be sent on branches not matching these filters. If not defined, slack message will be triggered on every branch. Filters can be glob patterns.                                                                                                                | undefined                                                      |
 
 ### Function
 
