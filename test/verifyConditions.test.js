@@ -80,7 +80,7 @@ describe('test verifyConditions', () => {
         new SemanticReleaseError(
           'branchesConfig is not an array.',
           'EINVALIDBRANCHCONFIG',
-          `Provided branches configuration is not an array. Make "branchesConfig" is properly set in your configuration option.`
+          `Provided branches configuration is not an array. Ensure "branchesConfig" is properly set in your configuration option.`
         )
       )
     })
@@ -98,7 +98,7 @@ describe('test verifyConditions', () => {
         new SemanticReleaseError(
           'pattern is not defined in branchesConfig.',
           'ENOPATTERN',
-          `A pattern for the branch configuration must be added. Make "branchesConfig" is properly set in your configuration option.`
+          `A pattern for the branch configuration must be added. Ensure "branchesConfig" is properly set in your configuration option.`
         )
       )
     })

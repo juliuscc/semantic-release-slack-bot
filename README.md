@@ -60,7 +60,7 @@ With this example:
 - Slack notification will always be sent using the "https://my-webhook.com" webhook url
 - Slack notifications are sent on a failure release from branches matching "lts/\*"
 - Slack notifications are sent on a failure or successful release from branch "master"
-- Slack notifications are skipped on every other branches
+- Slack notifications are skipped on all other branches
 
 ## Screenshots
 

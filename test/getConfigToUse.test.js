@@ -15,7 +15,7 @@ describe('test getConfigToUse', () => {
     assert.deepEqual(actual, expectedConfig)
   })
 
-  it('should return the branche config merged with the global config when branchesConfig match the branch', () => {
+  it('should return the branch config merged with the global config when branchesConfig match the branch', () => {
     const context = getContext('lts/1.x')
 
     const pluginConfig = {
