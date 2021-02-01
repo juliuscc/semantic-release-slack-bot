@@ -7,7 +7,7 @@ const getBaseConfig = packageName => {
   }
 }
 
-const getContext = () => {
+const getContext = (branchName = 'master') => {
   const version = '1.0.0'
   return {
     logger: console,
@@ -23,7 +23,10 @@ const getContext = () => {
     env: {
       npm_package_name: 'internal test'
     },
-    errors: ['Something went horribly wrong']
+    errors: ['Something went horribly wrong'],
+    branch: {
+      name: branchName
+    }
   }
 }
 

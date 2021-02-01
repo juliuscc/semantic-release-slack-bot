@@ -2,6 +2,7 @@ const SemanticReleaseError = require('@semantic-release/error')
 const assert = require('assert')
 
 const verifyConditions = require('../lib/verifyConditions')
+const { getContext } = require('./testUtils')
 
 describe('test verifyConditions', () => {
   beforeEach(() => {
@@ -57,6 +58,61 @@ describe('test verifyConditions', () => {
       process.env.CUSTOM_WEBHOOK = 'MY SLACK WEBHOOK'
       verifyConditions(
         { ...defaultPluginConfig, slackWebhookEnVar: 'CUSTOM_WEBHOOK' },
+        fakeContext
+      )
+    })
+  })
+
+  describe('test branchesConfig options', () => {
+    const fakeContext = getContext()
+    const defaultPluginConfig = {
+      packageName: 'test',
+      slackWebhook: 'MY SLACK WEBHOOK'
+    }
+
+    it('should throw if branchesConfig is not an array', () => {
+      assert.throws(
+        () =>
+          verifyConditions(
+            { ...defaultPluginConfig, branchesConfig: {} },
+            fakeContext
+          ),
+        new SemanticReleaseError(
+          'branchesConfig is not an array.',
+          'EINVALIDBRANCHCONFIG',
+          `Provided branches configuration is not an array. Ensure "branchesConfig" is properly set in your configuration option.`
+        )
+      )
+    })
+
+    it('should throw if branchesConfig do not contain a pattern', () => {
+      assert.throws(
+        () =>
+          verifyConditions(
+            {
+              ...defaultPluginConfig,
+              branchesConfig: [{ pattern: 'master' }, {}]
+            },
+            fakeContext
+          ),
+        new SemanticReleaseError(
+          'pattern is not defined in branchesConfig.',
+          'ENOPATTERN',
+          `A pattern for the branch configuration must be added. Ensure "branchesConfig" is properly set in your configuration option.`
+        )
+      )
+    })
+
+    it('should not throw if branchesConfig is not provided', () => {
+      verifyConditions(defaultPluginConfig, fakeContext)
+    })
+
+    it('should not throw if branchesConfig is properly set', () => {
+      verifyConditions(
+        {
+          ...defaultPluginConfig,
+          branchesConfig: [{ pattern: 'master' }, { pattern: 'lts/*' }]
+        },
         fakeContext
       )
     })

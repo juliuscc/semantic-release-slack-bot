@@ -36,7 +36,19 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
       "semantic-release-slack-bot",
       {
         "notifyOnSuccess": false,
-        "notifyOnFail": true
+        "notifyOnFail": false,
+        "slackWebhook": "https://my-webhook.com",
+        "branchesConfig": [
+          {
+            "pattern": "lts/*",
+            "notifyOnFail": true
+          },
+          {
+            "pattern": "master1",
+            "notifyOnSuccess": true,
+            "notifyOnFail": true
+          }
+        ]
       }
     ]
   ]
@@ -45,8 +57,10 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 
 With this example:
 
-- Slack notifications are skipped on a successful release
-- Slack notifications are sent on a failed release
+- Slack notification will always be sent using the "https://my-webhook.com" webhook url
+- Slack notifications are sent on a failure release from branches matching "lts/\*"
+- Slack notifications are sent on a failure or successful release from branch "master"
+- Slack notifications are skipped on all other branches
 
 ## Screenshots
 
@@ -93,6 +107,7 @@ Alternatively, you could pass the webhook as a configuration option.
 | `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                                                                                                                                                                                               | value of the environment variable matching `slackWebhookEnVar` |
 | `packageName`          | Override or add package name instead of npm package name                                                                                                                                                                                                                                          | SEMANTIC_RELEASE_PACKAGE or npm package name                   |
 | `unsafeMaxLength`      | Maximum character length for the release notes before truncation. If unsafeMaxLength is too high, messages can be dropped. [Read here](https://github.com/juliuscc/semantic-release-slack-bot/issues/26#issuecomment-569804359) for more information. Set to '0' to turn off truncation entirely. | 2900                                                           |
+| `branchesConfig`       | Allow to specify a custom configuration for branches which match a given pattern. For every branches matching a branch config, the config will be merged with the one put at the root. A key "pattern" used to filter the branch using glob expression must be contained in every branchesConfig. | []                                                             |
 
 ### Function
 
