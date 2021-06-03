@@ -1,4 +1,4 @@
-const verifyConditions = require('./lib/verifyConditions.js')
+const verifyConditions = require('./lib/verifyConditions')
 const success = require('./lib/success')
 const fail = require('./lib/fail')
 
