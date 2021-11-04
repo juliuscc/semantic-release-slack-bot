@@ -9,7 +9,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14.7"
   },
   "repository": {
     "type": "git",
