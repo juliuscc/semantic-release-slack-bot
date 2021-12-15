@@ -21,9 +21,9 @@ Add the plugin to your npm-project:
 $ npm install semantic-release-slack-bot -D
 ```
 
-The corresponding slack app has to be installed in your slack workspace as well. Follow the instructions under [configuration](#configuration) for more information.
+## Slack App/Webhook Usage
 
-## Usage
+The corresponding slack app has to be installed in your slack workspace as well. Follow the instructions under [configuration](#configuration) for more information.
 
 The plugin can be configured in the [**semantic-release** configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):
 
@@ -62,6 +62,48 @@ With this example:
 - Slack notifications are sent on a failure or successful release from branch "master"
 - Slack notifications are skipped on all other branches
 
+## Slack Access Token/Channel Usage
+
+This configuration can be used with a [**bot**](https://api.slack.com/authentication/token-types#bot) Slack Access token with minimum permissions of `chat:write`.
+
+The plugin can be configured in the [**semantic-release** configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):
+
+```json
+{
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "semantic-release-slack-bot",
+      {
+        "notifyOnSuccess": false,
+        "notifyOnFail": false,
+        "slackToken": "token",
+        "slackChannel": "my-channel-name",
+        "branchesConfig": [
+          {
+            "pattern": "lts/*",
+            "notifyOnFail": true
+          },
+          {
+            "pattern": "master1",
+            "notifyOnSuccess": true,
+            "notifyOnFail": true
+          }
+        ]
+      }
+    ]
+  ]
+}
+```
+
+With this example:
+
+- Slack notification will always be sent to the channel "#my-channel-name"
+- Slack notifications are sent on a failure release from branches matching "lts/\*"
+- Slack notifications are sent on a failure or successful release from branch "master"
+- Slack notifications are skipped on all other branches
+
 ## Screenshots
 
 ![Screenshot of success](images/screenshot-success.png)
@@ -77,20 +119,29 @@ The plugin uses a slack webhook which you get by adding the slack app to your sl
 
 For the security concerned, feel free to [create your own slack app](https://api.slack.com/apps) and create a webhook or inspect the server code that does this creation for you at [create-webhook.js](lambda/create-webhook.js). The only required permission for the webhook is to publish to a single channel.
 
-### Slack app authentication
+### Slack Webhook
 
 Installing the app will yield you with a webhook that the app uses to publish updates to your selected channel. The Slack webhook authentication link is **required and needs to be kept a secret**. It should be defined in the [environment variables](#environment-variables).
 
+### Slack Access tokens
+
+If you are creating your own slack app you can choose to use a bot access token and channel instead of the webhook with at least one of the following permission scopes.
+
+1. `chat:write` with this permission scope the app/bot must be added to any channels before it can post to them
+2. `chat:write.public` with this permission scope we can automatically post to any public channel for more information see [here](https://api.slack.com/authentication/basics#public)
+
 ### Environment variables
 
-The `SLACK_WEBHOOK` variable can be defined in the environment where you will run semantic release. This can be done by exporting it in bash or in the user interface of your CI provider. Obtain this token by installing the slack app according to [slack app installation](#slack-app-installation).
+Options can be defined in the environment where you will run semantic release. This can be done by exporting it in bash or in the user interface of your CI provider.
 
-Alternatively, you could pass the webhook as a configuration option.
+Alternatively, you can pass the webhook as a configuration option or use an Access Token.
 
-| Variable                   | Description                                              |
-| -------------------------- | -------------------------------------------------------- |
-| `SLACK_WEBHOOK`            | Slack webhook created when adding app to workspace.      |
-| `SEMANTIC_RELEASE_PACKAGE` | Override or add package name instead of npm package name |
+| Variable                   | Description                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| `SLACK_WEBHOOK`            | Slack webhook created when adding app to workspace.                                  |
+| `SLACK_TOKEN`              | Slack bot Access token.                                                              |
+| `SLACK_CHANNEL`            | Slack channel name or id to send notifications to (must be used with `SLACK_TOKEN`). |
+| `SEMANTIC_RELEASE_PACKAGE` | Override or add package name instead of npm package name                             |
 
 ### Options
 
@@ -103,8 +154,12 @@ Alternatively, you could pass the webhook as a configuration option.
 | `onSuccessTemplate`    | Provides a template for the slack message object on success when `notifyOnSuccess` is `true`. See [templating](#templating).                                                                                                                                                                      | undefined                                                      |
 | `onFailTemplate`       | Provides a template for the slack message object on fail when `notifyOnFail` is `true`. See [templating](#templating).                                                                                                                                                                            | undefined                                                      |
 | `markdownReleaseNotes` | Pass release notes through markdown to slack formatter before rendering.                                                                                                                                                                                                                          | false                                                          |
-| `slackWebhookEnVar`    | This decides what the environment variable for exporting the slack webhook is called.                                                                                                                                                                                                             | SLACK_WEBHOOK                                                  |
+| `slackWebhookEnVar`    | This decides what the environment variable for exporting the slack webhook value.                                                                                                                                                                                                                 | SLACK_WEBHOOK                                                  |
 | `slackWebhook`         | Slack webhook created when adding app to workspace.                                                                                                                                                                                                                                               | value of the environment variable matching `slackWebhookEnVar` |
+| `slackTokenEnVar`      | This decides what the environment variable for exporting the slack token value.                                                                                                                                                                                                                   | SLACK_WEBHOOK                                                  |
+| `slackToken`           | Slack bot token.                                                                                                                                                                                                                                                                                  | value of the environment variable matching `slackWebhookEnVar` |
+| `slackChannelEnVar`    | This decides what the environment variable for exporting the slack channel value.                                                                                                                                                                                                                 | SLACK_WEBHOOK                                                  |
+| `slackChannel`         | Slack channel name or id to send notifications to.                                                                                                                                                                                                                                                | value of the environment variable matching `slackWebhookEnVar` |
 | `packageName`          | Override or add package name instead of npm package name                                                                                                                                                                                                                                          | SEMANTIC_RELEASE_PACKAGE or npm package name                   |
 | `unsafeMaxLength`      | Maximum character length for the release notes before truncation. If unsafeMaxLength is too high, messages can be dropped. [Read here](https://github.com/juliuscc/semantic-release-slack-bot/issues/26#issuecomment-569804359) for more information. Set to '0' to turn off truncation entirely. | 2900                                                           |
 | `branchesConfig`       | Allow to specify a custom configuration for branches which match a given pattern. For every branches matching a branch config, the config will be merged with the one put at the root. A key "pattern" used to filter the branch using glob expression must be contained in every branchesConfig. | []                                                             |
