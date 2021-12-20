@@ -62,6 +62,17 @@ With this example:
 - Slack notifications are sent on a failure or successful release from branch "master"
 - Slack notifications are skipped on all other branches
 
+#### Note
+
+[The official documentation](https://api.slack.com/messaging/webhooks) says that a developer cannot
+override the default channel or icon that are associated with the webhook, but some users of this
+library reported that they were able to.
+
+- use `slackIcon` (or `SLACK_ICON` env var) for overriding slack icon
+- use `slackChannel` (or `SLACK_CHANNEL` env var) for overriding slack channel
+
+**WARNING: This is not mentioned in the official documentation, so use at your own risk.**
+
 ## Slack Access Token/Channel Usage
 
 This configuration can be used with a [**bot**](https://api.slack.com/authentication/token-types#bot) Slack Access token with minimum permissions of `chat:write`.
@@ -136,12 +147,13 @@ Options can be defined in the environment where you will run semantic release. T
 
 Alternatively, you can pass the webhook as a configuration option or use an Access Token.
 
-| Variable                   | Description                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------ |
-| `SLACK_WEBHOOK`            | Slack webhook created when adding app to workspace.                                  |
-| `SLACK_TOKEN`              | Slack bot Access token.                                                              |
-| `SLACK_CHANNEL`            | Slack channel name or id to send notifications to (must be used with `SLACK_TOKEN`). |
-| `SEMANTIC_RELEASE_PACKAGE` | Override or add package name instead of npm package name                             |
+| Variable                   | Description                                              |
+| -------------------------- | -------------------------------------------------------- |
+| `SLACK_WEBHOOK`            | Slack webhook created when adding app to workspace.      |
+| `SLACK_TOKEN`              | Slack bot Access token.                                  |
+| `SLACK_CHANNEL`            | Slack channel name or id to send notifications to.       |
+| `SLACK_ICON`               | Slack bot app icon.                                      |
+| `SEMANTIC_RELEASE_PACKAGE` | Override or add package name instead of npm package name |
 
 ### Options
 

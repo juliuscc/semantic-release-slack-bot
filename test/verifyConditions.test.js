@@ -85,40 +85,6 @@ describe('test verifyConditions', () => {
       return `A Slack Channel must be created and set in the \`${slackChannelEnVar}\` environment variable on your CI environment.\n\n\nPlease make sure to set a Slack Channel in the \`${slackChannelEnVar}\` environment variable on your CI environment. Alternatively, provide \`slackChannel\` as a configuration option.`
     }
 
-    it('should throw if neither slackToken and environment variable SLACK_TOKEN are set but slackChannel is', () => {
-      assert.throws(
-        () =>
-          verifyConditions(
-            { ...defaultPluginConfig, slackChannel: 'some channel' },
-            fakeContext
-          ),
-        new SemanticReleaseError(
-          'No Slack token defined.',
-          'ENOSLACKTOKEN',
-          getMissingTokenError('SLACK_TOKEN')
-        )
-      )
-    })
-
-    it('should throw if slackChannel is set, slackToken is not set and slackTokenEnVar give an empty environment variable', () => {
-      assert.throws(
-        () =>
-          verifyConditions(
-            {
-              ...defaultPluginConfig,
-              slackChannel: 'some channel',
-              slackTokenEnVar: 'CUSTOM_TOKEN'
-            },
-            fakeContext
-          ),
-        new SemanticReleaseError(
-          'No Slack token defined.',
-          'ENOSLACKTOKEN',
-          getMissingTokenError('CUSTOM_TOKEN')
-        )
-      )
-    })
-
     it('should throw if neither slackChannel and environment variable SLACK_CHANNEL are set but slackToken is', () => {
       assert.throws(
         () =>
