@@ -70,12 +70,12 @@ describe('test postMessage with token/channel', () => {
   it('should pass if response is 200 "ok"', async () => {
     nock(slackPostMessageDomain)
       .post(slackPostMessagePath)
-      .reply(200, 'ok')
+      .reply(200, JSON.stringify({ ok: true }))
     assert.ifError(await postToken())
   })
 
   it('should fail if response text is not "ok"', async () => {
-    const response = 'not ok'
+    const response = JSON.stringify({ ok: false })
     nock(slackPostMessageDomain)
       .post(slackPostMessagePath)
       .reply(200, response)
