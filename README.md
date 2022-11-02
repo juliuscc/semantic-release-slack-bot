@@ -91,7 +91,7 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
         "notifyOnSuccess": false,
         "notifyOnFail": false,
         "slackToken": "token",
-        "slackChannel": "my-channel-name",
+        "slackChannel": "#my-channel-name",
         "branchesConfig": [
           {
             "pattern": "lts/*",
