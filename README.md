@@ -21,6 +21,10 @@ Add the plugin to your npm-project:
 $ npm install semantic-release-slack-bot -D
 ```
 
+## Requirements
+
+As per the new release of semantic-release library version 20, the library is requiring the use of Node v18, which we need to comply as well to use keep the repo updated with it's latest feature. More information can be found [here](https://github.com/semantic-release/semantic-release/releases/tag/v20.0.0).
+
 ## Slack App/Webhook Usage
 
 The corresponding slack app has to be installed in your slack workspace as well. Follow the instructions under [configuration](#configuration) for more information.
@@ -198,9 +202,7 @@ const { chunkifyString } = require('semantic-release-slack-bot/lib/chunkifier')
 
 const onSuccessFunction = (pluginConfig, context) => {
   const releaseNotes = slackifyMarkdown(context.nextRelease.notes)
-  const text = `Updates to ${
-    pluginConfig.packageName
-  } has been released to *Stage!*`
+  const text = `Updates to ${pluginConfig.packageName} has been released to *Stage!*`
   const headerBlock = {
     type: 'section',
     text: {
