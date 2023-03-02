@@ -10,9 +10,7 @@ exports.handler = function(event, context) {
 
     const optionspost = {
       host: 'slack.com',
-      path: `/api/oauth.access?client_id=${client_id}&client_secret=${client_secret}&code=${
-        event.queryStringParameters.code
-      }`,
+      path: `/api/oauth.access?client_id=${client_id}&client_secret=${client_secret}&code=${event.queryStringParameters.code}`,
       method: 'GET'
     }
 
@@ -39,9 +37,7 @@ exports.handler = function(event, context) {
             context.succeed({
               statusCode: 301,
               headers: {
-                Location: `https://juliuscc.github.io/semantic-release-slack-bot/index.html?access_token=${
-                  jsonStr.access_token
-                }`
+                Location: `https://juliuscc.github.io/semantic-release-slack-bot/index.html?access_token=${jsonStr.access_token}`
               }
             })
           } else {
